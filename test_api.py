@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @Filename:    test_api.py
-# @Author:      Kuro
+
 # @Time:        5/21/2025 9:41 AM
 
 import asyncio

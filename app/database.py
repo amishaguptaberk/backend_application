@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @Filename:    database.py
-# @Author:      Kuro
+
 # @Time:        5/21/2025 9:40 AM
 
 import os

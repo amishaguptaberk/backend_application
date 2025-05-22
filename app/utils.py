@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @Filename:    utils.py
-# @Author:      Kuro
+
 # @Time:        5/21/2025 9:41 AM
 
 import random

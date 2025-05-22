@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @Filename:    crud.py
-# @Author:      Kuro
+
 # @Time:        5/21/2025 9:41 AM
 
 from sqlalchemy import select, update
