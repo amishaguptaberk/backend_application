@@ -12,3 +12,5 @@ WORKDIR /app
 COPY --from=builder /install /usr/local
 COPY app app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8081"]
+EXPOSE 8080
+CMD ["python", "main.py"]  # or the appropriate start command for your app
