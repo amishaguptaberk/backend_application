@@ -61,7 +61,7 @@ pip install -r requirements.txt            # :contentReference[oaicite:7]{index=
 
 ```bash
 docker compose up -d --build
-# API: http://localhost:8081
+# API: http://localhost:8080
 ```
 
 Compose exports two variables to the container:
@@ -75,8 +75,8 @@ Compose exports two variables to the container:
 
 ```bash
 export ASYNC_DB_URL='mysql+aiomysql://user:pass@127.0.0.1:3306/url_shortener'
-export BASE_URL='http://localhost:8081'
-uvicorn app.main:app --reload --port 8081
+export BASE_URL='http://localhost:8080'
+uvicorn app.main:app --reload --port 8080
 ```
 
 ---
@@ -86,7 +86,7 @@ uvicorn app.main:app --reload --port 8081
 ### 1. Create a short link
 
 ```bash
-curl -X POST http://localhost:8081/shorten \
+curl -X POST http://localhost:8080/shorten \
      -H "Content-Type: application/json" \
      -d '{"url":"https://example.com"}'
 ```
@@ -97,7 +97,7 @@ curl -X POST http://localhost:8081/shorten \
 ```json
 {
   "short_code": "Ab3xYz",
-  "short_url": "http://localhost:8081/Ab3xYz"
+  "short_url": "http://localhost:8080/Ab3xYz"
 }
 ```
 
@@ -106,7 +106,7 @@ curl -X POST http://localhost:8081/shorten \
 ### 2. Redirect
 
 ```bash
-curl -I http://localhost:8081/Ab3xYz
+curl -I http://localhost:8080/Ab3xYz
 # HTTP/1.1 307 Temporary Redirect
 # Location: https://example.com/
 ```
@@ -114,7 +114,7 @@ curl -I http://localhost:8081/Ab3xYz
 ### 3. Fetch analytics
 
 ```bash
-curl http://localhost:8081/analytics/Ab3xYz
+curl http://localhost:8080/analytics/Ab3xYz
 ```
 
 Sample response (after one redirect):
@@ -137,7 +137,7 @@ Analytics schema defined in `schemas.py` .
 Open a WebSocket (e.g. with **wscat**):
 
 ```bash
-wscat -c ws://localhost:8081/ws/analytics/Ab3xYz
+wscat -c ws://localhost:8080/ws/analytics/Ab3xYz
 ```
 
 * Upon connect you receive the current counter:

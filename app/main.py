@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # @Filename:    main.py
-
+# @Author:      Amisha
 # @Time:        5/21/2025 9:41 AM
 
 import os
@@ -83,4 +83,4 @@ async def analytics_ws(ws: WebSocket, short_code: str, db: AsyncSession = Depend
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8081)
+    uvicorn.run(app, host="0.0.0.0", port=8080)

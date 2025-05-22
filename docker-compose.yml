@@ -31,8 +31,8 @@ services:
         condition: service_healthy
     environment:
       ASYNC_DB_URL: "mysql+aiomysql://root:root@db:3306/url_shortener"
-      BASE_URL: "http://localhost:8081"
+      BASE_URL: "http://localhost:8080"
     ports:
-      - "8081:8081"
+      - "8080:8080"
     networks:
       - shared_network
