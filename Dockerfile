@@ -8,9 +8,13 @@ RUN pip install --prefix=/install -r requirements.txt
 FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1 \
     BASE_URL=https://your-domain-or-cloudrun-url
+
 WORKDIR /app
 COPY --from=builder /install /usr/local
 COPY app app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8081"]
+
+# EXPOSE the port
 EXPOSE 8080
-CMD ["python", "main.py"]  # or the appropriate start command for your app
+
+# Use only one CMD, and listen on the correct port
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
