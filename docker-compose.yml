@@ -1,0 +1,38 @@
+# docker compose -f docker-compose.yml -p url_shorten_service up -d --build
+# docker compose -f docker-compose.yml -p url_shorten_service down -v
+
+version: "3.9"
+
+networks:
+  shared_network:
+    driver: bridge
+
+services:
+  db:
+    image: mysql:8.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: url_shortener
+    ports:
+      - "3306:3306"
+    networks:
+      - shared_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASYNC_DB_URL: "mysql+aiomysql://root:root@db:3306/url_shortener"
+      BASE_URL: "http://localhost:8081"
+    ports:
+      - "8081:8081"
+    networks:
+      - shared_network
